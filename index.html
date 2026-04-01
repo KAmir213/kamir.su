@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="ka.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <title>KAmir Group — Performance. Aesthetics. Innovation.</title>
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --bg-light: #ffffff;
+            --text-main: #202124;
+            --text-gray: #bdc1c6;
+            --accent: #0080FF;
+            --font: 'Urbanist', sans-serif;
+            --grid-line-color: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gridAnim {
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
+        }
+
+        .black-block-animated {
+            background-color: var(--bg-dark);
+            background-image: linear-gradient(135deg, var(--grid-line-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridAnim 20s linear infinite;
+        }
+
+        nav {
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo-font { font-family: var(--font); font-weight: 900; color: var(--accent); letter-spacing: -1px; text-decoration: none; }
+        .logo-block { display: flex; align-items: center; gap: 12px; }
+        .ka-icon { width: 32px; height: 32px; object-fit: contain; }
+
+        .hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; color: white; }
+        .hero .main-logo { font-size: clamp(4rem, 12vw, 8rem); margin-bottom: 20px; }
+
+        /* --- ФИКС БЕСКОНЕЧНОЙ ЛЕНТЫ --- */
+        .marquee-section { 
+            background: white; 
+            padding: 60px 0; 
+            overflow: hidden; 
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            width: 100%;
+        }
+        .marquee-label { text-align: center; font-size: 0.7rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 25px; color: #888; }
+        
+        .marquee-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+            animation: scroll-marquee 40s linear infinite;
+        }
+
+        .marquee-section:hover .marquee-content { animation-play-state: paused; }
+
+        .marquee-item { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            padding: 0 40px; 
+            color: #000; 
+            display: flex; 
+            align-items: center;
+        }
+        .marquee-slash { color: var(--accent); margin-right: 15px; }
+
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        /* --- БЛОКИ ПРОЕКТОВ --- */
+        .section-header { background: white; padding: 80px 0 40px; text-align: center; }
+        .section-title { font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+
+        .project-block {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+            padding: 100px 10%;
+            gap: 80px;
+            color: white;
+            margin-bottom: 80px; 
+        }
+        .project-block:nth-child(even) { flex-direction: row-reverse; }
+
+        .project-info { flex: 1; }
+        .project-visual { 
+            flex: 1; 
+            height: 450px; 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            border-radius: 40px; 
+        }
+
+        .tag { color: var(--accent); text-transform: uppercase; font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; display: block; }
+        .project-info h3 { font-size: 3.5rem; font-weight: 700; margin-bottom: 25px; letter-spacing: -1px; }
+        .project-info p { color: var(--text-gray); font-size: 1.2rem; font-weight: 300; margin-bottom: 45px; max-width: 600px; }
+
+        .btn { display: inline-block; padding: 18px 40px; color: white; text-decoration: none; border-radius: 20px; border: 1px solid #333; font-weight: 700; transition: 0.3s; }
+        .btn:hover { background: white; color: black; }
+
+        /* Белый зазор перед футером */
+        .footer-spacer { height: 100px; background: white; }
+
+        footer { padding: 100px 10% 50px; color: white; border-top: 1px solid #1a1a1a; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; margin-bottom: 80px; }
+        .footer-col h4 { margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: white; }
+        .footer-col a { color: var(--text-gray); text-decoration: none; display: block; margin-bottom: 12px; font-size: 0.9rem; transition: 0.3s; }
+        .footer-col a:hover { color: white; }
+
+        @media (max-width: 992px) {
+            .project-block, .project-block:nth-child(even) { flex-direction: column; text-align: center; padding: 80px 5%; }
+            .project-visual { width: 100%; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-block">
+            <img src="ka.png" alt="ka" class="ka-icon">
+            <span class="logo logo-font">KAmir</span>
+        </a>
+    </nav>
+
+    <header class="hero black-block-animated">
+        <div class="main-logo logo-font">KAmir</div>
+        <h1>Performance. Aesthetics.</h1>
+        <p>Основано в 2018. Мы создаём экосистемы, где чистый код становится искусством.</p>
+    </header>
+
+    <section class="marquee-section">
+        <div class="marquee-label">НАШИ ПРОЕКТЫ</div>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="marquee-item"><span class="marquee-slash">/</span>KAmir</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Kaeront</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>FYGHTING</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>STRYKE</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Adventures and Legends</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Discord "Pages Bot"</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Nights at Smile's</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>KAmir</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Kaeront</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>FYGHTING</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>STRYKE</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Adventures and Legends</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Discord "Pages Bot"</div>
+                <div class="marquee-item"><span class="marquee-slash">/</span>Nights at Smile's</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-header">
+        <h2 class="section-title">Направления разработки</h2>
+    </div>
+
+    <main>
+        <section class="project-block black-block-animated">
+            <div class="project-info">
+                <span class="tag">Gaming Infrastructure</span>
+                <h3>Kaeront</h3>
+                <p>Флагманская сеть Minecraft серверов. Техническая база на Purpur/Paper, кастомная генерация и полное отсутствие P2W.</p>
+                <a href="https://kaeront.ru" target="_blank" class="btn">Explore Network</a>
+            </div>
+            <div class="project-visual"></div>
+        </section>
+
+        <section class="project-block black-block-animated">
+            <div class="project-info">
+                <span class="tag">System Engineering</span>
+                <h3>Discord "Pages Bot"</h3>
+                <p>Профессиональный инструмент автоматизации, запущенный в 2021 году. Мощная архитектура для управления сообществами.</p>
+                <span class="btn">Private Infrastructure</span>
+            </div>
+            <div class="project-visual"></div>
+        </section>
+
+        <section class="project-block black-block-animated">
+            <div class="project-info">
+                <span class="tag">Competitive Modes</span>
+                <h3>FYGHTING / STRYKE</h3>
+                <p>Разработка уникальных соревновательных PvP-механик. От Hero Shooter до тактических сражений.</p>
+                <span class="btn">Under Development</span>
+            </div>
+            <div class="project-visual"></div>
+        </section>
+    </main>
+
+    <div class="footer-spacer"></div>
+
+    <footer class="black-block-animated">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-block" style="margin-bottom: 25px;">
+                    <img src="ka.png" alt="ka" class="ka-icon">
+                    <span class="logo logo-font">KAmir</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-gray);">KAmir Group — Performance. Aesthetics. Innovation.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Discovery</h4>
+                <a href="#projects">Проекты</a>
+                <a href="https://kaeront.ru/news">Новости</a>
+                <a href="https://github.com/KAmir213">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Projects</h4>
+                <a href="https://kaeront.ru">Kaeront Survival</a>
+                <a href="https://stryke.kamir.su">STRYKE</a>
+                <a href="https://fyghting.kamir.su">FYGHTING</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:admin@kamir.su">admin@kamir.su</a>
+                <a href="mailto:contact@kamir.su">contact@kamir.su</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #1a1a1a; padding-top: 40px; color: #444; font-size: 0.8rem; display: flex; justify-content: space-between;">
+            <p>&copy; 2026 KAmir Group.</p>
+            <p>NOT AN OFFICIAL MINECRAFT PRODUCT.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
