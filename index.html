@@ -3,71 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAmir — Timeline</title>
+
+<title>KAmir — Development Archive</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
     --blue:#0080FF;
-    --black:#0a0a0a;
-    --gray:#6f6f6f;
+    --black:#0b0b0b;
+    --gray:#777;
     --light:#ffffff;
+    --bg:#ffffff;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
-body{background:#fff;color:#111;overflow-x:hidden;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter, sans-serif;
+}
 
-/* NAVBAR */
+body{
+    background:var(--bg);
+    color:#111;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
 nav{
-    position:sticky;top:0;
+    position:sticky;
+    top:0;
+    z-index:999;
     background:#fff;
     border-bottom:1px solid #eee;
-    padding:18px 8%;
+    padding:18px 7%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    z-index:1000;
 }
-nav a{
-    text-decoration:none;
-    color:#111;
-    font-weight:700;
-    font-size:13px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
+
 .logo{
-    font-size:18px;
     font-weight:900;
+    font-size:18px;
+    letter-spacing:1px;
 }
+
 .logo span{color:var(--blue);}
 
-/* HERO */
+nav a{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#111;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+/* ================= HERO ================= */
 .hero{
     height:92vh;
     background:var(--black);
-    color:white;
+    color:#fff;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
+    flex-direction:column;
     text-align:center;
     position:relative;
     overflow:hidden;
 }
 
 .hero h1{
-    font-size:clamp(3rem,10vw,7rem);
-    letter-spacing:-3px;
+    font-size:clamp(3rem, 9vw, 7rem);
     font-weight:900;
+    letter-spacing:-3px;
 }
+
 .hero p{
-    margin-top:12px;
+    margin-top:14px;
     color:var(--blue);
     letter-spacing:6px;
-    text-transform:uppercase;
     font-size:12px;
+    text-transform:uppercase;
 }
 
 /* PARTICLES */
@@ -76,23 +95,26 @@ nav a{
     inset:0;
     overflow:hidden;
 }
+
 .particles span{
     position:absolute;
-    width:3px;height:3px;
+    width:3px;
+    height:3px;
     background:var(--blue);
     border-radius:50%;
-    animation:float 8s linear infinite;
+    animation:float linear infinite;
     opacity:.6;
 }
+
 @keyframes float{
     from{transform:translateY(100vh);opacity:0;}
     50%{opacity:1;}
     to{transform:translateY(-10vh);opacity:0;}
 }
 
-/* TITLE */
-.section-title{
-    padding:90px 8% 40px;
+/* ================= TITLE ================= */
+.title{
+    padding:100px 7% 40px;
     text-align:center;
     font-size:3rem;
     font-weight:900;
@@ -100,134 +122,185 @@ nav a{
     color:#ddd;
 }
 
-/* STORY */
+/* ================= STORY BLOCK ================= */
 .story{
-    padding:40px 8%;
+    padding:40px 7%;
 }
+
 .year{
     color:var(--blue);
     font-weight:900;
-    font-size:14px;
+    font-size:13px;
     letter-spacing:2px;
 }
+
 .story h2{
     font-size:2rem;
-    margin-top:8px;
-}
-.story p{
-    margin-top:10px;
-    color:#444;
-    max-width:800px;
+    margin-top:6px;
 }
 
-/* PRODUCT BLOCK */
+.story p{
+    margin-top:10px;
+    max-width:850px;
+    color:#444;
+    line-height:1.6;
+}
+
+/* ================= PRODUCT BLOCK ================= */
 .block{
     display:flex;
     align-items:stretch;
+    gap:30px;
     margin:80px 0;
+    padding:0 7%;
 }
 
 .block.reverse{
     flex-direction:row-reverse;
 }
 
+/* MEDIA SIDE */
 .media{
     flex:1;
-    min-height:380px;
-    background:#111;
+    min-height:420px;
     border-radius:18px;
-    margin:0 20px;
-    background-size:cover;
-    background-position:center;
+    background:#111;
+    position:relative;
+    overflow:hidden;
 }
 
+/* IMAGE SLOT GUIDE */
+.media::after{
+    content:"IMAGE SLOT";
+    position:absolute;
+    top:10px;
+    right:10px;
+    font-size:10px;
+    color:#fff;
+    opacity:.5;
+}
+
+/* CONTENT SIDE */
 .content{
     flex:1;
-    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
-.content h3{
-    color:#111;
-    font-size:2rem;
-    margin-bottom:10px;
-}
 .content h4{
     color:var(--blue);
-    font-size:12px;
+    font-size:11px;
     letter-spacing:2px;
     margin-bottom:10px;
 }
+
+.content h3{
+    font-size:2rem;
+    margin-bottom:12px;
+}
+
 .content p{
     color:#333;
     line-height:1.6;
+    font-size:15px;
 }
 
-/* MARQUEE */
+/* ================= MARQUEE ================= */
 .marquee{
     overflow:hidden;
     border-top:1px solid #eee;
     border-bottom:1px solid #eee;
-    padding:30px 0;
-    background:#fff;
+    padding:25px 0;
 }
 
 .track{
     display:flex;
     width:max-content;
-    animation:scroll 30s linear infinite;
+    animation:scroll 35s linear infinite;
 }
 
 .item{
-    font-weight:900;
-    padding:0 30px;
     white-space:nowrap;
-    font-size:14px;
+    padding:0 35px;
+    font-weight:900;
+    font-size:13px;
 }
 
-.item span{color:var(--blue);}
+.item span{
+    color:var(--blue);
+}
+
 @keyframes scroll{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer{
-    background:#0a0a0a;
+    background:#0b0b0b;
     color:#aaa;
-    padding:60px 8%;
+    padding:70px 7%;
 }
+
 .footer-grid{
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
     gap:40px;
 }
+
 footer h3{
-    color:white;
-    margin-bottom:10px;
+    color:#fff;
+    margin-bottom:12px;
 }
+
 footer a{
+    display:block;
     color:#777;
     text-decoration:none;
-    display:block;
     margin:6px 0;
+    font-size:14px;
 }
-footer a:hover{color:var(--blue);}
+
+footer a:hover{
+    color:var(--blue);
+}
+
 .bottom{
     margin-top:40px;
     border-top:1px solid #222;
-    padding-top:20px;
-    font-size:12px;
+    padding-top:18px;
     display:flex;
     justify-content:space-between;
+    font-size:12px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media(max-width:900px){
-    .block{flex-direction:column;}
-    .block.reverse{flex-direction:column;}
-    .media{margin:0 0 20px 0;}
-    .section-title{font-size:2rem;}
-    .footer-grid{grid-template-columns:1fr;}
+
+    nav{
+        padding:16px 5%;
+    }
+
+    .block{
+        flex-direction:column;
+    }
+
+    .block.reverse{
+        flex-direction:column;
+    }
+
+    .media{
+        min-height:260px;
+    }
+
+    .title{
+        font-size:2rem;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -245,13 +318,13 @@ footer a:hover{color:var(--blue);}
 
 <!-- HERO -->
 <section class="hero">
+
     <div class="particles">
-        <!-- генерация частиц -->
         <script>
-            for(let i=0;i<60;i++){
+            for(let i=0;i<70;i++){
                 document.write(`<span style="
                     left:${Math.random()*100}%;
-                    animation-duration:${4+Math.random()*6}s;
+                    animation-duration:${3+Math.random()*7}s;
                     animation-delay:${Math.random()*5}s;
                 "></span>`);
             }
@@ -259,33 +332,33 @@ footer a:hover{color:var(--blue);}
     </div>
 
     <h1>KAmir</h1>
-    <p>Build. Break. Rebuild.</p>
+    <p>BUILD · BREAK · EVOLVE</p>
 </section>
 
 <!-- TITLE -->
-<div class="section-title" id="history">—ИСТОРИЯ—</div>
+<div class="title" id="history">— ИСТОРИЯ —</div>
 
-<!-- STORY BLOCKS -->
-
+<!-- ================= 2018–2019 ================= -->
 <div class="story">
     <div class="year">2018 — 2019</div>
-    <h2>Рождение идей</h2>
-    <p>Появление KAmir как имени и первых концептов игр. Это период чистой фантазии: гонки, MOBA, геройские шутеры и первые попытки повторить Roblox Arsenal.</p>
+    <h2>Рождение идеи</h2>
+    <p>Имя KAmir появляется как творческий псевдоним. Формируются первые идеи игр: гонки, MOBA, геройские шутеры и попытки повторить Roblox Arsenal.</p>
 </div>
 
 <div class="block">
     <div class="media"></div>
     <div class="content">
-        <h4>EARLY CONCEPTS / FOUNDATION</h4>
-        <h3>Идеи без движка</h3>
-        <p>Всё начиналось без технологий. Только идеи и желание создавать собственные игровые миры.</p>
+        <h4>CONCEPT STAGE / IDEAS ONLY</h4>
+        <h3>Мир без кода</h3>
+        <p>На этом этапе не существовало инструментов — только воображение и желание создавать свои игры.</p>
     </div>
 </div>
 
+<!-- ================= 2020 ================= -->
 <div class="story">
     <div class="year">2020</div>
-    <h2>Первый строительный этап</h2>
-    <p>Переход в Roblox Studio. Начало создания карт и формирование визуального языка уровней.</p>
+    <h2>Первые миры</h2>
+    <p>Начало работы в Roblox Studio. Формируется визуальный стиль и подход к дизайну уровней.</p>
 </div>
 
 <div class="block reverse">
@@ -293,29 +366,31 @@ footer a:hover{color:var(--blue);}
     <div class="content">
         <h4>ROBLOX STUDIO / LEVEL DESIGN</h4>
         <h3>Архитектура карт</h3>
-        <p>Первые полноценные игровые пространства. Простота форм и эксперимент с геометрией.</p>
+        <p>Первые игровые пространства. Простая геометрия, тестирование движения и боевых сценариев.</p>
     </div>
 </div>
 
+<!-- ================= 2021 ================= -->
 <div class="story">
     <div class="year">2021</div>
     <h2>Автоматизация</h2>
-    <p>Появление KASBot — первый опыт системного программирования вне игр.</p>
+    <p>Создание KASBot — первый опыт системного программирования и управления сообществом.</p>
 </div>
 
 <div class="block">
     <div class="media"></div>
     <div class="content">
-        <h4>DISCORD BOT / AUTOMATION</h4>
-        <h3>KASBot система</h3>
-        <p>Связь игроков, статистика, управление сервером. Первый шаг к экосистеме.</p>
+        <h4>DISCORD SYSTEM / BOT ENGINE</h4>
+        <h3>KASBot</h3>
+        <p>Бот для Discord, объединяющий игроков и автоматизирующий процессы сервера.</p>
     </div>
 </div>
 
+<!-- ================= 2022 ================= -->
 <div class="story">
     <div class="year">2022</div>
-    <h2>Эксперименты с атмосферой</h2>
-    <p>Fancade и создание Corridors — работа с напряжением и минимализмом.</p>
+    <h2>Атмосфера</h2>
+    <p>Эксперименты в Fancade. Создание Corridors — работа с напряжением и минимализмом.</p>
 </div>
 
 <div class="block reverse">
@@ -323,60 +398,62 @@ footer a:hover{color:var(--blue);}
     <div class="content">
         <h4>HORROR / ATMOSPHERE DESIGN</h4>
         <h3>Corridors</h3>
-        <p>Опыт создания страха через звук, свет и пространство.</p>
+        <p>Игра, построенная на страхе, звуке и ограниченном пространстве.</p>
     </div>
 </div>
 
+<!-- ================= 2023 ================= -->
 <div class="story">
     <div class="year">2023</div>
     <h2>Matchmaking эпоха</h2>
-    <p>Создание карт и развитие системы матчмейкинга.</p>
+    <p>Развитие карт и систем матчмейкинга. Формируется структура будущей экосистемы.</p>
 </div>
 
 <div class="block">
     <div class="media"></div>
     <div class="content">
-        <h4>GAME SYSTEM / MULTIPLAYER</h4>
+        <h4>MULTIPLAYER SYSTEM</h4>
         <h3>The Port</h3>
-        <p>Карта, ставшая вершиной старого стиля разработки.</p>
+        <p>Одна из ключевых карт старого этапа разработки.</p>
     </div>
 </div>
 
+<!-- ================= 2025 ================= -->
 <div class="story">
     <div class="year">2025</div>
     <h2>Технологический скачок</h2>
-    <p>Source2Viewer, CS2 текстуры, переход к более реалистичному визуалу.</p>
+    <p>Переход к Source 2 пайплайну и высококачественным текстурам.</p>
 </div>
 
 <div class="block reverse">
     <div class="media"></div>
     <div class="content">
-        <h4>SOURCE 2 / VISUAL UPGRADE</h4>
+        <h4>SOURCE 2 PIPELINE</h4>
         <h3>Sandeqer</h3>
-        <p>Карта нового уровня качества.</p>
+        <p>Карта нового визуального уровня.</p>
     </div>
 </div>
 
+<!-- ================= 2026 ================= -->
 <div class="story">
     <div class="year">2026</div>
     <h2>Ребрендинг</h2>
-    <p>Переход от AlsasnikS к Kaeront и запуск новой экосистемы.</p>
+    <p>Переход от экспериментальных проектов к полноценной структуре Kaeront.</p>
 </div>
 
 <div class="block">
     <div class="media"></div>
     <div class="content">
-        <h4>BRAND REBUILD / ECOSYSTEM</h4>
+        <h4>BRAND SYSTEM / STUDIO ERA</h4>
         <h3>Kaeront + FYGHTING</h3>
-        <p>Финальная точка трансформации в полноценную студию.</p>
+        <p>Формирование экосистемы проектов и запуск новой студийной идентичности.</p>
     </div>
 </div>
 
-<!-- MARQUEE -->
+<!-- ================= MARQUEE ================= -->
 <div class="marquee">
     <div class="track">
 
-        <!-- повтор 2 раза для бесконечности -->
         <div class="item"><span>/</span> KAMIR GROUP</div>
         <div class="item"><span>/</span> KAERONT</div>
         <div class="item"><span>/</span> FYGHTING</div>
@@ -398,13 +475,13 @@ footer a:hover{color:var(--blue);}
     </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer>
     <div class="footer-grid">
 
         <div>
             <h3>KAmir</h3>
-            <p>Game development, systems, experimental worlds and interactive design.</p>
+            <p>Game development studio archive. Systems, experiments, multiplayer worlds and prototypes.</p>
         </div>
 
         <div>
@@ -426,7 +503,7 @@ footer a:hover{color:var(--blue);}
 
     <div class="bottom">
         <span>© 2018–2026 KAmir</span>
-        <span>Built like a studio</span>
+        <span>Studio Archive Interface</span>
     </div>
 </footer>
 
